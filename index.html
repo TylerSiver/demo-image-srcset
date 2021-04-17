@@ -4,8 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Responsive Images</title>
+    <link rel="preload" href="img/eggs-900.jpg" as="image" media="(min-width: 900px)">
+    <link rel="preload" href="img/eggs-600.jpg" as="image" media="(min-width: 600px)">
+
+
+    <!-- 1. make sure the images are flexible and fit any sized container they are in -->
+    <style>
+        img {
+            max-width: 100%;
+            display: block;
+        }
+    </style>
 </head>
 <body>
+    <!-- get brower to fetch and load the version of the image with the msallest dimensions (file size) but that is still the equal  -->
 
+    <!-- (the srcset) and add the src to that image -->
+
+    <img srcset="img/eggs-600.jpg, 
+                img/eggs-900" 
+            src="img/eggs-900.jpg" 
+            alt="Easter Egg">
+
+    <!-- notice that its loading the first inmage only, thats because the browser has no way of determining the file size of the two images, so its takes the first one -->
+    <!-- 3. Add in width descriptors -->
+
+    <img srcset="img/eggs-600.jpg 600w, 
+            img/eggs-900.jpg 900w" 
+        src="img/eggs-900.jpg" 
+        alt="Easter Egg">
+
+    <!-- 4. add size attributes along with the srcset attribute -->
+    <img srcset="img/eggs-600.jpg 600w, 
+            img/eggs-900.jpg 900w" 
+        src="img/eggs-900.jpg" 
+        sizes="50vw" 
+        alt="Easter Egg">
+
+        <!-- 5. we can use media queries in the sizes attributes to fetch and load the image to a size parameter based on the browser width -->
+    
+    <img srcset="img/eggs-600.jpg 600w, 
+            img/eggs-900.jpg 900w" 
+        sizes="(max-width: 600px) 50vw 100vw"
+        src="img/eggs-900.jpg" 
+        alt="Easter Egg">
+
+    <img src="img/C517RYNWgAEqwy5.jpeg" width="1600" height="900" alt="SourceSet">
 </body>
 </html>
